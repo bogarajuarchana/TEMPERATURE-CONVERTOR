@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Temperature Converter</h2>
+        <form id="tempConverterForm">
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" placeholder="Enter temperature" required>
+            <br>
+            <label for="unit">Unit:</label>
+            <select id="unit">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+            <br>
+            <label for="result">Result:</label>
+            <input type="text" id="result" placeholder="Converted temperature" readonly>
+            <br>
+            <button type="button" onclick="convertTemperature()">Convert</button>
+        </form>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const temperatureInput = document.getElementById("temperature");
+            const unitSelect = document.getElementById("unit");
+            const resultInput = document.getElementById("result");
+
+            const temperature = parseFloat(temperatureInput.value);
+            const unit = unitSelect.value;
+
+            if (unit === "celsius") {
+                const fahrenheit = (temperature * 9/5) + 32;
+                resultInput.value = fahrenheit.toFixed(2) + " °F";
+            } else if (unit === "fahrenheit") {
+                const celsius = (temperature - 32) * 5/9;
+                resultInput.value = celsius.toFixed(2) + " °C";
+            }
+        }
+    </script>
+</body>
+</html>
